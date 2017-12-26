@@ -1,4 +1,6 @@
 # spring-cloud-demo
 
-## spring-cloud-config
-config file in "configrepo"
+## spring-cloud-config-server
+
+## spring-cloud-config-client
+bootstrap.yml is loaded earlier than application.yml
