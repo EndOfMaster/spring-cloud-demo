@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    initialize: false # 生产环境永远不应该让程序直接修改库
-    jpa:
-      generate-ddl: false # 生产环境永远不应该让程序直接修改库
-logging:
-  level:
-    com.endofmaster: info

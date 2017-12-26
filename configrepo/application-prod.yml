@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    initialize: false
+    jpa:
+      generate-ddl: false
+logging:
+  level:
+    com.endofmaster: info

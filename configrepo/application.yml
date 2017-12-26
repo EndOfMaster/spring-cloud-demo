@@ -1,17 +1,15 @@
 server:
   port: 8080
-  tomcat:
-    protocol-header: x-forwarded-proto # 由SLB负责https时，tomcat需要设置该项，否则可能导致重定向失败
 management:
-  port: 8081 # 管理端点端口与应用端口分开，便于权限控制
+  port: 18081
   security:
-    enabled: false # 为简化而禁用，同时通过安全组保证只在公司可访问
+    enabled: false
 spring:
   jackson:
     serialization:
-      indent-output: true # 统一缩进格式
+      indent-output: true
     deserialization: 
-      fail-on-unknown-properties: false # 忽略未知属性
+      fail-on-unknown-properties: false
 logging:
   level:
-    com.endofmaster: debug # 日志默认开到debug
+    com.endofmaster: debug
