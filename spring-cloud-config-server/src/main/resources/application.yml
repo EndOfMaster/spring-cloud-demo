@@ -3,8 +3,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/EndOfMaster/spring-cloud-demo/configrepo
-          username: EndOfMaster
+          uri: https://github.com/EndOfMaster/configrepo
+          username: 843698826@qq.com
           password: ${GITHUB_PASSWORD}
       username: test
       password: test
