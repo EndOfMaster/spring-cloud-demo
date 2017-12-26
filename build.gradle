@@ -12,23 +12,27 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
+group 'com.endofmaster'
 
-repositories {
-    mavenLocal()
-    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-    jcenter()
-    maven { url "http://dl.bintray.com/payingcloud/maven" }
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
 
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.RELEASE'
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        jcenter()
+        maven { url "http://dl.bintray.com/payingcloud/maven" }
     }
-}
 
-dependencies {
-    compile 'org.springframework.cloud:spring-cloud-starter-config'
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.RELEASE'
+        }
+    }
+
+//    dependencies {
+//        compile 'org.springframework.cloud:spring-cloud-starter-config'
+//        compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+//    }
 }
