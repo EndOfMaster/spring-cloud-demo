@@ -1,0 +1,21 @@
+server:
+  port: 1111
+eureka:
+  instance:
+    hostname: peer1
+  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@peer2:1112/eureka/
+#      defaultZone: http://peer2:1112/eureka/
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+security:
+  user:
+    name: testUser
+    password: testPasswd
+spring:
+  application:
+    name: eureka-server

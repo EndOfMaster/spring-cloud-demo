@@ -1,4 +1,12 @@
+server:
+  port: 8080
+security:
+  user:
+    name: testUser
+    password: testPasswd
 spring:
+  profiles:
+    active: prod
   cloud:
     config:
       server:
@@ -8,7 +16,16 @@ spring:
           password: ${GITHUB_PASSWORD}
       username: test
       password: test
-  profiles:
-    active: prod
-server:
-  port: 8080
+  application:
+    name: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@peer1:1111/eureka/,peer2:1112/eureka/
+#      defaultZone: http://127.0.0.1:8082/eureka/
+  instance:
+    lease-expiration-duration-in-seconds: 3
+    lease-renewal-interval-in-seconds: 3
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${eureka.instance.ip-address}:${server.port}
