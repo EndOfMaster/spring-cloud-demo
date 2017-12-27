@@ -1,0 +1,18 @@
+server:
+  port: 8082
+eureka:
+  instance:
+    hostname: eureka-server
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+security:
+  user:
+    name: testUser
+    password: testPasswd
+spring:
+  application:
+    name: eureka-server
