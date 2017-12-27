@@ -1,3 +1,3 @@
 include 'spring-cloud-config-server'
 include 'spring-cloud-config-client'
-include 'spring-cloud-eureka-server'
+include 'spring-cloud-netflix-eureka-server'
