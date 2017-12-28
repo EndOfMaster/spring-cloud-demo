@@ -1,0 +1,16 @@
+version: '2'
+services:
+
+  eureka1:
+    image: spring-cloud-netflix-eureka-server-demo
+    ports:
+      - "1111:1111"
+    environment:
+      - spring.profiles.active=eureka1
+
+  eureka2:
+      image: spring-cloud-netflix-eureka-server-demo
+      ports:
+        - "1112:1111"
+      environment:
+        - spring.profiles.active=eureka1

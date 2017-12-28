@@ -1,14 +1,12 @@
 buildscript {
-    ext {
-        springBootVersion = '1.5.9.RELEASE'
-    }
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.1'
     }
 }
 
@@ -17,12 +15,12 @@ group 'com.endofmaster'
 subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
+    apply plugin: 'com.bmuschko.docker-remote-api'
 
     repositories {
         mavenLocal()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         jcenter()
-        maven { url "http://dl.bintray.com/payingcloud/maven" }
     }
 
     dependencyManagement {
@@ -30,4 +28,13 @@ subprojects {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.RELEASE'
         }
     }
+
+    docker {
+        registryCredentials {
+            url = 'https://registry.cn-beijing.aliyuncs.com'
+            username = project.hasProperty('myDockerUser') ? project.property('myDockerUser') : '<dockerUser>'
+            password = project.hasProperty('myDockerPassword') ? project.property('myDockerPassword') : '<dockerPassword>'
+        }
+    }
+
 }

@@ -21,7 +21,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://${security.user.name}:${security.user.password}@peer1:1111/eureka/,peer2:1112/eureka/
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.ip-address}:1111/eureka/,${eureka.instance.ip-address}:1112/eureka/
 #      defaultZone: http://127.0.0.1:8082/eureka/
   instance:
     lease-expiration-duration-in-seconds: 3

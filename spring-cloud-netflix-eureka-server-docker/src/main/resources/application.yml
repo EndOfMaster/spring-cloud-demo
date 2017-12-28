@@ -1,0 +1,14 @@
+server:
+  port: 8082
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+  instance:
+    hostname: eureka-server
+  client:
+    service-url:
+      defaultZone: http://10.146.194.72/eureka
+spring:
+  application:
+    name: eureka-server
