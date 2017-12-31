@@ -1,0 +1,15 @@
+eureka1:
+  image: registry-vpc.cn-beijing.aliyuncs.com/wzm/spring-cloud-netfilx-eureka-demo:20171231191741
+  hostname: eureka1
+  ports:
+    - "8082:8082"
+  environment:
+    - ADDITIONAL_EUREKA_SERVER=http://eureka2:8082/eureka/
+
+eureka2:
+  image: registry-vpc.cn-beijing.aliyuncs.com/wzm/spring-cloud-netfilx-eureka-demo:20171231191741
+  hostname: eureka2
+  ports:
+    - "8082:8082"
+  environment:
+    - ADDITIONAL_EUREKA_SERVER=http://eureka1:8082/eureka/

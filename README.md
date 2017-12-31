@@ -11,3 +11,5 @@ bootstrap.yml is loaded earlier than application.yml
 "eureka.client.fetchRegistry" should be re-opened
 - this demo "eureka.client.serviceUrl.defaultZone" url peer1 and peer2 
 is to modify the host file
+### spring-cloud-netflix-eureka-server-docker
+- In the container service of the aliyun cloud

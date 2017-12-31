@@ -6,12 +6,10 @@ eureka:
     eviction-interval-timer-in-ms: 4000
   client:
     service-url:
-      defaultZone: http://172.17.87.229/eureka
+      defaultZone: ${ADDITIONAL_EUREKA_SERVER}
   instance:
     lease-expiration-duration-in-seconds: 5
     lease-renewal-interval-in-seconds: 5
-    ip-address: ${req.ip}
-    prefer-ip-address: true
 spring:
   application:
     name: eureka-server
