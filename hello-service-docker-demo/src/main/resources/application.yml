@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: hello-demo
+eureka:
+  client:
+    service-url:
+      defaultZone: ${req.list}
+  instance:
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 5

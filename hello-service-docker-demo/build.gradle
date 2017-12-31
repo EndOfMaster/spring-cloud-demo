@@ -1,11 +1,5 @@
 dependencies {
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-netflix:1.4.0.RELEASE'
-    }
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 }
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
@@ -14,7 +8,7 @@ import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 import java.text.SimpleDateFormat
 
 ext {
-    dockerImageName = 'registry.cn-beijing.aliyuncs.com/wzm/spring-cloud-netfilx-eureka-demo:' + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+    dockerImageName = 'registry.cn-beijing.aliyuncs.com/wzm/spring-cloud-hello-demo:' + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
 }
 
 task dockerBuild(type: DockerBuildImage, dependsOn: bootRepackage) {
