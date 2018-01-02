@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: netflix-hystrix
+  cloud:
+    config:
+      enabled: false

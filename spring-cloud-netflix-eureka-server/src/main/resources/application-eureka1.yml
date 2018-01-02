@@ -7,4 +7,5 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${security.user.name}:${security.user.password}@peer2:1112/eureka/
+#      defaultZone: http://${security.user.name}:${security.user.password}@peer2:1112/eureka/
+      defaultZone: http://peer2:1112/eureka/

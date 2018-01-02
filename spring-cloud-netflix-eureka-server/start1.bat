@@ -1,0 +1,1 @@
+java -Djava.security.egd=file:/dev/./urandom -jar build/libs/spring-cloud-netflix-eureka-server.jar --spring.profiles.active=eureka1

@@ -1,0 +1,15 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: hello-demo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/
+  instance:
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 5
+hystrix:
+  metrics:
+    polling-interval-ms: 2000
