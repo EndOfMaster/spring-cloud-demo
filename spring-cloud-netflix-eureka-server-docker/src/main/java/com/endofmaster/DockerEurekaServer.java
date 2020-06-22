@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 public class DockerEurekaServer {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(DockerEurekaServer.class).web(true).run(args);
+        new SpringApplicationBuilder(DockerEurekaServer.class).run(args);
     }
 
 }

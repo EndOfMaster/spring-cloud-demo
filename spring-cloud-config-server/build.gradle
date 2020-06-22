@@ -1,5 +1,26 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
+
+import java.text.SimpleDateFormat
+
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.cloud:spring-cloud-config-server'
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
+
+ext {
+    dockerImageName = 'registry.cn-beijing.aliyuncs.com/wzm/spring-cloud-netfilx-eureka-demo:' + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+}
+
+task dockerBuild(type: DockerBuildImage, dependsOn: bootJar) {
+    copy {
+        from("src/main/docker/Dockerfile")
+        into("build/libs")
+    }
+    inputDir = file('build/libs')
+    images.add(dockerImageName)
+}
+
+task dockerPush(type: DockerPushImage, dependsOn: dockerBuild) {
+    images.add(dockerImageName)
 }

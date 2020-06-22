@@ -1,7 +1,6 @@
 dependencies {
-    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
-    compile 'org.springframework.cloud:spring-cloud-starter-config'
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
@@ -13,11 +12,15 @@ ext {
     dockerImageName = 'registry.cn-beijing.aliyuncs.com/wzm/spring-cloud-hello-demo:' + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
 }
 
-task dockerBuild(type: DockerBuildImage, dependsOn: bootRepackage) {
-    inputDir = file('/')
-    tag = dockerImageName
+task dockerBuild(type: DockerBuildImage, dependsOn: bootJar) {
+    copy {
+        from("src/main/docker/Dockerfile")
+        into("build/libs")
+    }
+    inputDir = file('build/libs')
+    images.add(dockerImageName)
 }
 
 task dockerPush(type: DockerPushImage, dependsOn: dockerBuild) {
-    imageName = dockerBuild.tag
+    images.add(dockerImageName)
 }
